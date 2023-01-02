@@ -965,6 +965,11 @@ library.unloadall = unloadall
 shared.libraries[1 + #shared.libraries] = library
 function library.unload()
 	__runscript = nil
+
+    if _G.target_ui then
+        _G.target_ui:Destroy()
+    end
+
 	hardunload(library)
 	if shared.libraries then
 		for k, v in next, shared.libraries or {} do
