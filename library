@@ -966,9 +966,16 @@ shared.libraries[1 + #shared.libraries] = library
 function library.unload()
 	__runscript = nil
 
-    if _G.target_ui then
-        _G.target_ui:Destroy()
-    end
+	if _G.target_ui then
+	    if not is_sirhurt_closure and (syn and syn.protect_gui) then
+	syn.unprotect_gui(Target)
+	_G.target_ui.Parent = game:GetService("CoreGui")
+elseif get_hidden_gui then
+	_G.target_ui.Parent = nil
+elseif gethui then
+	_G.target_ui.Parent = nil
+end
+	end
 
 	hardunload(library)
 	if shared.libraries then
