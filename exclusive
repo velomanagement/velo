@@ -5961,6 +5961,7 @@ function library:CreateWindow(options, ...)
 					return objectdata
 				end
 			else
+                --[[
 				function sectionFunctions.AddPersistence()
 					if not library.warnedpersistance then
 						library.warnedpersistance = 1
@@ -5969,13 +5970,17 @@ function library:CreateWindow(options, ...)
 					function sectionFunctions.AddPersistence()
 					end
 				end
+
+                ]]--
 			end
+            --[[
 			sectionFunctions.NewPersistence = sectionFunctions.AddPersistence
 			sectionFunctions.CreatePersistence = sectionFunctions.AddPersistence
 			sectionFunctions.Persistence = sectionFunctions.AddPersistence
 			sectionFunctions.CreateSaveLoad = sectionFunctions.AddPersistence
 			sectionFunctions.SaveLoad = sectionFunctions.AddPersistence
 			sectionFunctions.SL = sectionFunctions.AddPersistence
+            ]]--
 			function sectionFunctions:AddDropdown(options, ...)
 				options = (options and type(options) == "string" and resolvevararg("Dropdown", options, ...)) or options
 				local dropdownName, listt, val, callback, flagName = assert(options.Name, "Missing Name for new searchbox."), assert(options.List, "Missing List for new searchbox."), options.Value, options.Callback, options.Flag or (function()
