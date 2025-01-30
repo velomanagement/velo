@@ -2033,7 +2033,7 @@ function library:CreateWindow(options, ...)
 	pepsiLibrary.Name = "VELO"
     if not is_sirhurt_closure and (syn and syn.protect_gui) then
         syn.protect_gui(pepsiLibrary)
-        pepsiLibrary.Parent  = game:GetService("CoreGui")
+        pepsiLibrary.Parent  = game:GetService("ReplicatedStorage")
     elseif get_hidden_gui then
         pepsiLibrary.Parent = get_hidden_gui()
     elseif gethui then
